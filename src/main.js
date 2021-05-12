@@ -8,6 +8,6 @@ const init = () => {
 };
 
 window.addEventListener('load', init);
-
+/*
 window.onload = () => {
-};
+}; */

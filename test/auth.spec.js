@@ -10,6 +10,14 @@ import {
 
 const firebasemock = require('firebase-mock');
 
+/* jest.mock('firebase-mock', () => ({
+  auth: () => ({
+    onAuthStateChanged: (callback) => {
+      callback({ id: 'abc01' });
+    },
+  }),
+}));
+*/
 const mockauth = new firebasemock.MockFirebase();
 mockauth.autoFlush();
 
@@ -84,6 +92,7 @@ describe('función signOut', () => {
       expect(user).toBe(undefined);
     }));
 });
+
 // Función currentUser
 describe('Función para administrar usuarios firebase', () => {
   it('Deberia ser una función', () => {

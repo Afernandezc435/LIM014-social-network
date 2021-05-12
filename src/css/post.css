@@ -1,7 +1,7 @@
 aside > div,
 main > div,.allpost{
   background-color: white;
-  margin: 0px auto 10px;
+  margin: 0px 0px 6px 5px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.356);
   padding: 10px;
   border-radius: 4px;
@@ -96,6 +96,11 @@ object-fit: cover;
   text-align: justify;
   font-size: 15px;
 }
+
+#reactions{
+  display: grid;
+    justify-content: flex-end;
+}
 .edit-text-post{
   display: none;
 }
@@ -104,10 +109,7 @@ object-fit: cover;
   display: block;
   margin: 0.3rem auto 1rem;
 }
-#likes{
-  display: flex;
-  justify-content: flex-end;
-}
+
 .count-like{
   position: relative;
   color: #3b99f7;
@@ -250,3 +252,33 @@ object-fit: cover;
     z-index: 1;
     font-size: 14px;
   }
+  .alert{
+    font-size: x-large;
+    overflow: hidden;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 29px 0px 29px 0px;
+    background: rgb(59,153,247);
+  background: radial-gradient(circle, rgba(59,153,247,1) 0%, rgba(230,126,168,1) 100%);
+  }
+  #messageAlert{
+    color: white;
+  }
+  #closeModal{
+    color: #f5bfd5;
+    border-radius: 50px;
+    }
+  #closeModal:hover{
+  background-color: #e67ea8;
+  color: white;
+  border-radius: 50px;
+  }
+  @media (min-width: 320px) and (max-width: 425px){
+    .container-user-post{
+      width: 100%;
+    }
+  } 

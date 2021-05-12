@@ -41,8 +41,9 @@
   display: block;
   cursor: pointer;
 }
-.menu-post li:hover,
-.menu-comment li:hover {
+
+.menu-post-content li:hover,
+.menu-comment-content li:hover {
   background-color:#3b99f7;
   color: white;
   font-weight: 600;
@@ -128,6 +129,10 @@ select{
   color: white;
   font-weight: 800;
 }
+.edit-comment:hover{
+  background-color:#3b99f7;
+  color: white;
+}
 .time-comment{
   opacity: 0.6;
   font-size: 0.7rem;
@@ -136,4 +141,29 @@ select{
 }
 .hide{
   display: none;
+}
+.alertTwo{
+  font-size: x-large;
+  overflow: hidden;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 29px 0px 29px 0px;
+  background: rgb(59,153,247);
+background: radial-gradient(circle, rgba(59,153,247,1) 0%, rgba(230,126,168,1) 100%);
+}
+#messageAlertTwo{
+  color: white;
+}
+#closeModalTwo{
+  color: #f5bfd5;
+  border-radius: 50px;
+  }
+#closeModalTwo:hover{
+background-color: #e67ea8;
+color: white;
+border-radius: 50px;
 }

@@ -1,3 +1,4 @@
+
 /* propiedades universales, le indicamos al navegador que maantenga el ancho y alto sin
  importar el relleno y la fuente para la interfaz*/
  * {
@@ -39,6 +40,9 @@ header {
 }
 .imgClose {
   width: 17%;
+}
+main.home-section {
+  margin-top: 2%;
 }
 .container-home{
   background-color: whitesmoke;
@@ -326,14 +330,7 @@ header {
   /* left: 50%; */
   margin-left: -60px;
 }
-/*.fa-file-image:hover .tooltiptext,
-.fa-github:hover .tooltiptext,
-.fa-edit:hover .tooltiptext,
-.name:hover .tooltiptext,
-.btn-like:hover .tooltiptext,
-.count-like:hover .tooltiptext {
-  visibility: visible;
-} */
+
 .count-like .tooltiptext{
   left: 50%;
 }
@@ -418,4 +415,9 @@ background-size: 35px 20px, 100% 100%, 100% 100%;
 .right-section{
   grid-area: aside;
   text-align: center
+}
+@media (min-width: 320px) and (max-width: 425px){
+  #prueba{
+    display: contents;
+  }
 }

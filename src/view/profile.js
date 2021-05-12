@@ -16,6 +16,19 @@ export default (dataCurrentUser) => {
     if (user || user !== null) {
       viewProfile.classList.add('profile-container');
       viewProfile.innerHTML = `
+  <section class="main-header">
+  <nav>
+  <ul class="menu-header">
+    <div id="left-menu-header" class= "box">
+      <li class="home-header"><a href="#/home"><i class="fas fa-home"></i>Home</a></li>
+      <li class="profile-header"><a href="#/profile"><i class="fas fa-user-circle"></i>Profile</a></li>
+    </div>
+      <li class="title-header box"><a href="#/home"><img class="logowar" src="./imageProject/logow.png" width="50px">Wartay</a></li>
+      <li id="log-out-header" class="box"><span id ="btn-singOut"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión</span></li>
+  </ul>
+  </nav>
+  <i id="hamburger-menu" class="fas fa-bars hide"></i>
+  </section>
   <div class="profile-content">
   <div class="profile-background">
     <div class="profile-information shadow">
@@ -37,7 +50,6 @@ export default (dataCurrentUser) => {
       <span class = "edit-info" id="btn-editProfile"><i class="fas fa-edit"><span class="tooltiptext">Edit information</span></i></span>
         <h2 class="user-name">${dataCurrentUser.username}</p>
         <h2 class="user-name">${dataCurrentUser.profesión}</p>
-        <h3>About me</h3>
       </div>
     </div>
   </div>
@@ -77,6 +89,13 @@ export default (dataCurrentUser) => {
   </div>
 </section>
 `;
+      const hamburgerBotton = viewProfile.querySelector('#hamburger-menu');
+      const homeNav = viewProfile.querySelector('#left-menu-header');
+      const singOut = viewProfile.querySelector('#log-out-header');
+      hamburgerBotton.addEventListener('click', () => {
+        homeNav.classList.toggle('active');
+        singOut.classList.toggle('active');
+      });
 
       const selectPhotoProfile = viewProfile.querySelector('#select-photo-profile');
       selectPhotoProfile.addEventListener('change', (e) => {

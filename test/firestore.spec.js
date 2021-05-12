@@ -9,6 +9,13 @@ import {
   commentAdd,
   getComment,
   upgradePost,
+  removePost,
+  removeComment,
+  profilePhoto,
+  coveragePhoto,
+  upgradeLike,
+  upgradeComment,
+
 } from '../src/js/firestore';
 // Collection Firebase mock
 const fixtureData = {
@@ -33,6 +40,34 @@ const fixtureData = {
           urlimg: '',
           userId: '001',
 
+          SN_Comment: {
+            __doc__: {
+              id_001: {
+                comment: 'Hola chicos',
+                date: '5/5/2021 13:26:57',
+                userId: '001',
+              },
+            },
+          },
+        },
+        post_001: {
+          date: '',
+          likes: [],
+          publication: 'Publicaciones',
+          urlimg: '',
+          userId: 'uid_002',
+          __collection__: {
+            SN_Comment: {
+              __doc__: {
+                comment_001: {
+                  comment: '1',
+                  userId: 'uid_002',
+                  date: '10/5/2021 21:27:28',
+
+                },
+              },
+            },
+          },
         },
       },
     },
@@ -135,4 +170,68 @@ describe('Función upgradePost', () => {
         done();
       },
     )));
+});
+// Función removePost
+describe('Función removePost', () => {
+  it('Deberia ser una función', () => {
+    expect(typeof removePost).toBe('function');
+  });
+  it('Debería poder borrar el post', () => removePost()
+    .then((user) => {
+      expect(user).toBe(undefined);
+    }));
+});
+// Función removeComment
+describe('Función removeComment', () => {
+  it('Deberia ser una función', () => {
+    expect(typeof removeComment).toBe('function');
+  });
+  it('Debería poder borrar el comentario', () => removeComment()
+    .then((user) => {
+      expect(user).toBe(undefined);
+    }));
+});
+// Función profilePhoto
+describe('Función profilePhoto', () => {
+  it('Deberia ser una función', () => {
+    expect(typeof profilePhoto).toBe('function');
+  });
+  it('Debería poder actualizar de foto de perfil', () => profilePhoto('uid_002', './imageProject/avatar.png')
+    .then((user) => {
+      expect(user).toBe(undefined);
+    }));
+});
+// Función coveragePhoto
+describe('Función coveragePhoto', () => {
+  it('Deberia ser una función', () => {
+    expect(typeof coveragePhoto).toBe('function');
+  });
+  it('Debería poder actualizar de foto del cover', () => coveragePhoto('uid_002', './imageProject/avatar.png')
+    .then((user) => {
+      expect(user).toBe(undefined);
+    }));
+});
+
+// Función upgradeLike
+describe('Función upgradeLike', () => {
+  it('Deberia ser una función', () => {
+    expect(typeof upgradeLike).toBe('function');
+  });
+  it('Debería poder actualizar los likes del post', () => upgradeLike('post_001', [])
+    .then((post) => {
+      expect(post).toBe(undefined);
+    }));
+});
+// Función upgradeComment
+describe('Función upgradeComment', () => {
+  it('Deberia ser una función', () => {
+    expect(typeof upgradeComment).toBe('function');
+  });
+
+  it('Deberia actualizar información del comentario', (done) => upgradeComment('post_001', 'comment_001', 'Hola chicos')
+    .then(() => getComment('post_001', (data) => {
+      const result = data.find((post) => post.comment === 'Hola chicos');
+      expect(result.comment).toBe('Hola chicos');
+      done();
+    })));
 });

@@ -43,7 +43,6 @@
 
 .col-12{
   color: red;
-  margin-bottom: 5%;
   font-size: 0.8em;
 }
 
@@ -61,17 +60,13 @@ h4 {
 label {
   color: #4e4187;
 }
-
-/*BOTON PARA ENVIAR REGISTRO*/
-#btnLoginTwo {
-  color: #fff;
-  padding: 11px 63px;
-  margin-left: 13%;
-  font-weight: bold;
-  background: #e67ea8;
-  border-radius: 10px;
-  padding-top: 2%;
+#btnTwo{
+  display: flex;
+    justify-content: center;
 }
-#btnLoginTwo:hover {
-  background-color: #3b99f7;
+@media(min-width: 408px) and  (max-width: 1000px){
+.formRegister {
+  padding: 10px;
+  height: 79%;
+}
 }

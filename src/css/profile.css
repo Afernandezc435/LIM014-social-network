@@ -124,29 +124,29 @@
 }
 
  .modalHeader {
-  margin: 10px;
-  display: flex;
-  justify-content: space-evenly;
-  flex-flow: column nowrap;
-  width: 80%;
+      display: flex;
+      justify-content: space-evenly;
+      flex-flow: column nowrap;
+      width: 100%;
 } 
 .btn-modalClose{
   width: 30px;
   height: 30px;
   font-size: 16px;
   cursor: pointer;
-  color:#2CAB92;
+  color: #e67ea8;
   background-color: #ffffff;
-  border: solid 2px #2CAB92;
+  border: solid 2px #e67ea8;
   border-radius: 5px;
   position: absolute;
   right: 15px;
-  top: 15px;
+  top: 8px;
   outline: none;
 }
 .modalTitle{
-  color:#2CAB92;
-  text-align: center;
+  margin-top: 2%;
+    color: white;
+    text-align: center;
 }
 
 .modal-settings form{
@@ -166,6 +166,7 @@ outline: none;
 border-radius: 5px;
 }*/
 .grupo input{
+border-radius: 10px;
 width: 100%;
 height: 40px;
 }
@@ -179,7 +180,7 @@ resize: none;
 }*/
 .btn-update{
   border: none;
-  background: #2CAB92;
+  background: #e67ea8;
   color: #ffffff;
   margin-left: auto;
   margin-right: auto;
@@ -188,22 +189,22 @@ resize: none;
   border-radius: 55px;
   outline: none;
 }
-/*.grupo input:focus, #birthdayEdit:focus, textarea:focus{
-  box-shadow: 2px 7px 10px -5px #8894a0; 
+.grupo input:focus{
+  border: solid 2px #3b99f7;
 }
-.grupo input:hover, #birthdayEdit:hover, textarea:hover{
-  border: 1.6px solid #2b7a75;
-}*/
+.grupo input:hover{
+  border: solid 2px #3b99f7;
+}
 .btn-update:hover{
-  background: #2b7a75;
+  background: #3b99f7;
   width: 62%;
 height: 44px;
 }
 .btn-modalClose:hover{
   width: 34px;
   height: 34px;
-  border-color: #2b7a75;
-  color: #2b7a75;
+  border-color: #d63d7a;
+  color: #d63d7a;
 }
 
 /*modal edit profile*/

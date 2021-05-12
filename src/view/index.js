@@ -1,3 +1,4 @@
+// En este fichero creamos un objeto para exportar todas las vistas
 import Login from './login.js';
 import Check from './check.js';
 import viewHome from './home.js';

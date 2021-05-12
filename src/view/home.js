@@ -51,7 +51,6 @@ export default (dataCurrentUser) => {
               <input type="file" accept="image/jpeg, image/png, image/gif" id="upload-img" class="upload-img">
               <i class="far fa-file-image"><span class="tooltiptext">Upload an image</span></i>
             </label>
-              <option class="fa" value="public" title = "Public">&#xf57d; </option>
             <button type="submit" id="btn-post" class="btn-post" ><i class="fas fa-paper-plane"></i> Share</button>
           </div>
         </form>
