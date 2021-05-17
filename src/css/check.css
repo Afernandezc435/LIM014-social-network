@@ -1,0 +1,72 @@
+.logoDestokp {
+  display: flex;
+  width: 48%;
+}
+
+/*CONTENEDOR GENERAL*/
+.container-check {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/*CONTENEDOR FORMULARIO*/
+#containTwo {
+  display: flex;
+  justify-content: center;
+}
+
+/*INPUTS*/
+.formRegister {
+  width: 400px;
+  border-style: solid;
+  border-radius: 30px;
+  border-color: rgb(136, 120, 120);
+  padding: 30px;
+  margin-top: 10px;
+}
+
+.controls {
+  width: 100%;
+  background: #e6e6e6;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  border: 1px solid rgb(136, 120, 120);
+  font-size: 12px;
+}
+.controls:focus {
+  border: solid 2px #3b99f7;
+}
+.controls:hover {
+  border: solid 2px #3b99f7;
+}
+
+.col-12{
+  color: red;
+  font-size: 0.8em;
+}
+
+h4 {
+  color: #4e4187;
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.linea {
+  margin-bottom: 10px;
+}
+
+label {
+  color: #4e4187;
+}
+#btnTwo{
+  display: flex;
+    justify-content: center;
+}
+@media(min-width: 408px) and  (max-width: 1000px){
+.formRegister {
+  padding: 10px;
+  height: 79%;
+}
+}

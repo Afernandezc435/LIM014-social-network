@@ -1,87 +1,111 @@
-import auth from '../src/js/authFirebase.js';
+import {
+  signIn,
+  loginGoogle,
+  loginFacebook,
+  signUp,
+  emailVerification,
+  signOut,
+  currentUser,
+} from '../src/js/auth.js';
 
 const firebasemock = require('firebase-mock');
 
+/* jest.mock('firebase-mock', () => ({
+  auth: () => ({
+    onAuthStateChanged: (callback) => {
+      callback({ id: 'abc01' });
+    },
+  }),
+}));
+*/
 const mockauth = new firebasemock.MockFirebase();
-const mockfirestore = new firebasemock.MockFirestore();
 mockauth.autoFlush();
+
 global.firebase = firebasemock.MockFirebaseSdk(
-  (path) => (path ? mockdatabase.child(path) : null),
+  // use null if your code does not use RTDB
+  () => null,
   () => mockauth,
-  () => mockfirestore,
 );
-describe('Registro de usuarios', () => {
-  it('Debería ser una función', () => {
-    expect(typeof auth.signUp).toBe('function');
+// Función signIn
+describe('función signIn', () => {
+  it('Deberia ser una función', () => {
+    expect(typeof signIn).toBe('function');
   });
-});
-
-describe('Registrar usuarios', () => {
-  it('Debería poder registrar usuario con mail y password', () => {
-    auth.signUp('test-anayfernandez95@gmail.com', '123456')
-      .then((user) => {
-        expect(user.email).toBe('test-anayfernandez95@gmail.com');
-      });
-  });
-});
-
-describe('Inicio de sesión', () => {
-  it('Debería poder iniciar sesión con email y contraseña', () => {
-    auth.signIn('test-anayfernandez95@gmail.com', '123456')
-      .then((user) => {
-        expect(user.email).toBe('test-anayfernandez95@gmail.com');
-      });
-  });
-});
-
-describe('Inicio de sesion con facebook', () => {
-  it('Debería ser una funcion', () => {
-    expect(typeof auth.loginFacebook).toBe('function');
-  });
-  it('Deberia poder iniciar sesión', () => auth.loginFacebook()
+  it('Debería poder iniciar sesion', () => signIn('kelmita22@gmail.com', '123456')
     .then((user) => {
-      expect(user.isAnonymous).toBe(false);
+      expect(user.email).toBe('kelmita22@gmail.com');
     }));
 });
-
-describe('Inicio de sesion con google', () => {
-  it('Debería ser una funcion', () => {
-    expect(typeof auth.loginGoogle).toBe('function');
+// Función signUp
+describe('función signUp', () => {
+  it('Deberia ser una función', () => {
+    expect(typeof signUp).toBe('function');
   });
-
-  it('Deberia poder iniciar sesión', () => auth.loginGoogle()
+  it('Debería poder registrarse', () => signUp('kelmita22@gmail.com', '123456')
     .then((user) => {
-      expect(user.isAnonymous).toBe(false);
+      expect(user.email).toBe('kelmita22@gmail.com');
     }));
-});
-
-describe('Verifica si el usuario esta conectado', () => {
-  it('deberia ser una función', () => {
-    expect(typeof auth.currentUser).toBe('function');
-  });
-
-  it('Deberia mostrar el usuario activo', () => {
-    expect(auth.currentUser('anayfernandez95@gmail.com', '123456')).toBe(null);
-  });
-});
-
-describe('Verifica si el valor de current user es nulo', () => {
-  it('deberia ser una función', () => {
-    expect(typeof auth.isSigned).toBe('function');
-  });
-
-  it('deberia retornar un boolean', () => {
-    expect(auth.isSigned()).toBe(false);
-  });
-});
-describe('Cerrar sesión', () => {
-  it('deberia ser una función', () => {
-    expect(typeof auth.signOut).toBe('function');
-  });
-
-  it('Debería cerrar sesión del usuario', () => {
-    expect(auth.signOut()).toEqual({
-      _id: 5, _label: undefined, _result: undefined, _state: undefined, _subscribers: [],
+  // Función emailVerification
+  describe('función emailVerification', () => {
+    it('Deberia ser una función', () => {
+      expect(typeof emailVerification).toBe('function');
     });
+    it('Debería enviar un email de verificación', () => {
+      const verificationMock = jest.fn();
+      firebase.auth().currentUser.sendEmailVerification = verificationMock;
+      emailVerification();
+      expect(verificationMock).toHaveBeenCalled();
+      expect(verificationMock.mock.calls).toHaveLength(1);
+    });
+  });
+  // eslint-disable-next-line jest/no-focused-tests
+});
+// Función Facebook
+describe('Debería poder iniciar sesion con cuenta de facebook', () => {
+  it('Debería ser una funcion', () => {
+    expect(typeof loginFacebook).toBe('function');
+  });
+  it('Deberia poder iniciar sesión', () => loginFacebook()
+    .then((user) => {
+      expect(user.isAnonymous).toBe(false);
+    }));
+});
+// Función Google
+describe('loginGoogle', () => {
+  it('debería ser una función', () => {
+    expect(typeof loginGoogle).toBe('function');
+  });
+  it('debería poder ingresar con Google', () => {
+    loginGoogle('kelmita22@gmail.com')
+      .then((user) => {
+        expect(user.email).toBe('kelmita22@gmail.com');
+      });
+  });
+});
+// Función signOut
+describe('función signOut', () => {
+  it('Deberia ser una función', () => {
+    expect(typeof signOut).toBe('function');
+  });
+  it('Debería poder iniciar sesion', () => signOut()
+    .then((user) => {
+      expect(user).toBe(undefined);
+    }));
+});
+
+// Función currentUser
+describe('Función para administrar usuarios firebase', () => {
+  it('Deberia ser una función', () => {
+    expect(typeof currentUser).toBe('function');
+  });
+  it('Deberia mostrar el usuario ingresado', () => {
+    const userMock = {
+      currentUser: { id: 'abc01' },
+    };
+    firebase.auth().onAuthStateChanged().currentUser = userMock.currentUser;
+    const isUser = (user) => {
+      expect(user.id).toEqual('abc01');
+    };
+    currentUser(isUser);
   });
 });

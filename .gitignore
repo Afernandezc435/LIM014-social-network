@@ -7,4 +7,3 @@ package-lock.json/
 .babel.config.js/
 .README.pt-BR.md/
 .stylelint.config.js
-src/js/configurationKeys.js
