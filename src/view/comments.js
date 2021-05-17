@@ -32,13 +32,7 @@ export const itemComment = (objComment, idPost) => {
         <p class="time-comment">${objComment.date}</p>
       </section>
       </section>
-      <section class="modal-progress">
-<div class="alert">
-  <p id="messageAlert"></p>
-  <i class="fas fa-times-circle" id="closeModal"></i>
-</div>
-</section>
-      
+      <p class="col-12 error" id="lastname-error"></p>
   `;
       getUserData(objComment.userId)
         .then((doc) => {
@@ -65,14 +59,10 @@ export const itemComment = (objComment, idPost) => {
         if (userId === objComment.userId) {
           coments.querySelector('.edit-comment-text-btns').style.display = 'block';
         } else {
-          const enterModal = coments.querySelector('.modal-progress');
-          const textModal = coments.querySelector('#messageAlert');
-          enterModal.classList.add('showModal');
-          textModal.textContent = 'No puedes editar el comentario de otros usuario';
-          const closeModal = coments.querySelector('#closeModal');
-          closeModal.addEventListener('click', () => {
-            enterModal.classList.remove('showModal');
-          });
+          coments.querySelector('#lastname-error').innerHTML = 'No puedes editar un comentario de otro usuario';
+          setTimeout(() => {
+            coments.querySelector('#lastname-error').textContent = '';
+          }, 5000);
         }
       });
       // cancelar post
@@ -90,14 +80,10 @@ export const itemComment = (objComment, idPost) => {
         if (userId === objComment.userId) {
           removeComment(idPost, objComment.id);
         } else {
-          const enterModal = coments.querySelector('.modal-progress');
-          const textModal = coments.querySelector('#messageAlert');
-          enterModal.classList.add('showModal');
-          textModal.textContent = 'No puedes eliminar el comentario de otros usuario';
-          const closeModal = coments.querySelector('#closeModal');
-          closeModal.addEventListener('click', () => {
-            enterModal.classList.remove('showModal');
-          });
+          coments.querySelector('#lastname-error').innerHTML = 'No puedes borrar un comentario de otro usuario';
+          setTimeout(() => {
+            coments.querySelector('#lastname-error').textContent = '';
+          }, 5000);
         }
       });
     } else {

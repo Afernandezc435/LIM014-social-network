@@ -8,7 +8,7 @@ export default () => {
   viewLogin.classList.add('container');
   viewLogin.innerHTML = `
     <section class="forms-container">
-      <section class="signin-signup" >
+      <section class="signin-signup signin" id="signup" >
         <form action="#" class="sign-in-form">
           <img src="imageProject/iconWartay.png" class="logo" alt="" />
           <h2 class="title">Bienvenido a Wartay, la red de estudiantes y profesores a nivel mundial </h2>

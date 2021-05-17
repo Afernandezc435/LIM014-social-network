@@ -87,7 +87,6 @@ export const coveragePhoto = (userId, photoCover) => firebase.firestore().collec
 // Función para actualización de post
 export const upgradePost = (idPost, updatePublication) => {
   const db = firebase.firestore();
-
   return db.collection('wartay').doc(idPost).update({
     publication: updatePublication,
   });

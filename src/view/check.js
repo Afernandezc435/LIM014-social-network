@@ -68,7 +68,17 @@ export default () => {
   <p id="messageAlert"></p>
   <i class="fas fa-times-circle" id="closeModal"></i>
 </div>
-</section>`;
+</section>
+<section class="modal-progress">
+<div class="alert">
+  <p id="messageAlert"></p>
+  <section class="directionRow">
+  <i class="fas fa-times-circle" id="closeModal"></i>
+  <i class="fas fa-check" id="deleteModal"></i>
+  </section>
+</div>
+</section>
+`;
   // Evento para regresar a Login
   const signInBtn = viewCheck.querySelector('#signInBtn');
   signInBtn.addEventListener('click', () => { window.location.hash = ''; });
@@ -136,14 +146,33 @@ export default () => {
           userData(dataUser)
             .then((resu) => {
               emailVerification(resu);
-              alert('Se registro exitosamente, se envio un correo para la verificación');
-              window.location.hash = '#/';
+              const enterModal = viewCheck.querySelector('.modal-progress');
+              const textModal = viewCheck.querySelector('#messageAlert');
+              enterModal.classList.add('showModal');
+              textModal.textContent = 'Se registro exitosamente, se envio un correo para la verificación';
+              const closeModal = viewCheck.querySelector('#closeModal');
+              closeModal.addEventListener('click', () => {
+                document.getElementById('user-name').value = '';
+                document.getElementById('user-lastname').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('password').value = '';
+                document.getElementById('password-confirm').value = '';
+                enterModal.classList.remove('showModal');
+                // window.location.hash = '#/';
+              });
             }).catch((error) => {
               console.log(error);
             });
         })
         .catch(() => {
-          alert('La dirección de correo electrónico ya está siendo utilizada por otra cuenta');
+          const enterModal = viewCheck.querySelector('.modal-progress');
+          const textModal = viewCheck.querySelector('#messageAlert');
+          enterModal.classList.add('showModal');
+          textModal.textContent = 'La dirección de correo electrónico ya está siendo utilizada por otra cuenta';
+          const closeModal = viewCheck.querySelector('#closeModal');
+          closeModal.addEventListener('click', () => {
+            enterModal.classList.remove('showModal');
+          });
         });
     }
   });

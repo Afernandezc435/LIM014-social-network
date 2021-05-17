@@ -4,8 +4,8 @@ export const validateEmail = (email) => {
   const regEx = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
   return regEx.test(email);
 };
-// funcion que valida si los datos de usuario ne estan vacios y email es valido
 
+// funcion que valida si los datos de usuario no estan vacios y email es valido
 export const validateUser = (userEmail, userPass) => {
   if (
     !validateEmail(userEmail)

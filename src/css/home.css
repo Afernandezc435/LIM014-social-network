@@ -1,4 +1,3 @@
-
 /* propiedades universales, le indicamos al navegador que maantenga el ancho y alto sin
  importar el relleno y la fuente para la interfaz*/
  * {
@@ -368,6 +367,7 @@ main.home-section {
   justify-content: center;
 }
 .modal-progress{
+  z-index: 9;
   background: rgba(252, 252, 252, 0.5);
 }
 #uploader{

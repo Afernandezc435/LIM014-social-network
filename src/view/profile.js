@@ -4,7 +4,7 @@ import {
 } from '../js/firestore.js';
 
 import {
-  currentUser,
+  currentUser, signOut,
 } from '../js/auth.js';
 import { imgStorage } from '../js/storage.js';
 import { itemPost } from './post.js';
@@ -89,6 +89,14 @@ export default (dataCurrentUser) => {
   </div>
 </section>
 `;
+
+      // Función para cerrar sesión
+      const btnSignOut = viewProfile.querySelector('#btn-singOut');
+      btnSignOut.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.hash = '';
+        signOut();
+      });
       const hamburgerBotton = viewProfile.querySelector('#hamburger-menu');
       const homeNav = viewProfile.querySelector('#left-menu-header');
       const singOut = viewProfile.querySelector('#log-out-header');

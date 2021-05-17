@@ -80,8 +80,6 @@ export default (dataCurrentUser) => {
         e.preventDefault();
         window.location.hash = '';
         signOut();
-        /* .then(() => {
-      }); */
       });
       const imagePost = viewHome.querySelector('#post-img');
       const imageDelete = viewHome.querySelector('#remove-img');

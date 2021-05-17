@@ -68,7 +68,10 @@ export const itemPost = (objPost) => {
 <section class="modal-progress">
 <div class="alert">
   <p id="messageAlert"></p>
+  <section class="directionRow">
   <i class="fas fa-times-circle" id="closeModal"></i>
+  <i class="fas fa-check" id="deleteModal"></i>
+  </section>
 </div>
 </section>
 `;
@@ -141,7 +144,22 @@ export const itemPost = (objPost) => {
       postElement.querySelector(`#delete-post-${objPost.id}`)
         .addEventListener('click', () => {
           if (userId === objPost.userId) {
-            removePost(objPost.id);
+            const enterModal = postElement.querySelector('.modal-progress');
+            const textModal = postElement.querySelector('#messageAlert');
+            const deletePublication = postElement.querySelector('#deleteModal');
+            const directionRow = postElement.querySelector('.directionRow');
+            enterModal.classList.add('showModal');
+            deletePublication.style.display = 'block';
+            directionRow.style.display = 'flex';
+            textModal.textContent = 'Estas seguro que deseas eliminar el post?';
+            const closeModal = postElement.querySelector('#closeModal');
+            closeModal.addEventListener('click', () => {
+              enterModal.classList.remove('showModal');
+            });
+            deletePublication.addEventListener('click', () => {
+              removePost(objPost.id);
+              enterModal.classList.remove('showModal');
+            });
           } else {
             const enterModal = postElement.querySelector('.modal-progress');
             const textModal = postElement.querySelector('#messageAlert');

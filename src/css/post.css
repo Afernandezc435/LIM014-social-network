@@ -1,3 +1,4 @@
+
 aside > div,
 main > div,.allpost{
   background-color: white;
@@ -276,7 +277,17 @@ object-fit: cover;
   background-color: #e67ea8;
   color: white;
   border-radius: 50px;
+  
   }
+  #deleteModal{
+    display: none;
+    padding-left: 20px;
+    color: #f5bfd5;
+  }
+  #deleteModal:hover{
+    color:white;
+  }
+  
   @media (min-width: 320px) and (max-width: 425px){
     .container-user-post{
       width: 100%;
